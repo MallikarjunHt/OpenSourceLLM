@@ -1,0 +1,19 @@
+from dotenv import load_dotenv
+
+from langchain_community.llms import HuggingFaceHub
+from langchain.chains import LLMChain
+from langchain import PromptTemplate
+
+load_dotenv()
+
+llm = HuggingFaceHub(repo_id="mrm8488/t5-base-finetuned-wikiSQL")
+
+
+prompt = PromptTemplate(
+    input_variables=["question"],
+    template="Translate English to SQL : {question}"
+)
+str = "select all the users that has ratings grater than 8 in the servay data"
+chain = LLMChain(prompt=prompt, llm=llm, verbose=True)
+
+print(chain.run(str))
