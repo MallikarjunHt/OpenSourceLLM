@@ -1,6 +1,6 @@
 name: Create PR
 
-on:  Staging
+on:  [push]
 
 jobs:
   release:
@@ -12,3 +12,5 @@ jobs:
         uses: poorva17/create-pr-action@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HEAD_BRANCH: Staging
+          BASE_BRANCH: main
