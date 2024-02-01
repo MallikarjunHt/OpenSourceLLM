@@ -1,6 +1,6 @@
 name: Create PR
 
-on:  [push]
+on:  Staging
 
 jobs:
   release:
